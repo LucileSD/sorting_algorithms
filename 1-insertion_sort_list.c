@@ -37,7 +37,7 @@ void insertion_sort_list(listint_t **list)
 {
 	listint_t *browse = NULL;
 
-	if (!*list || !list)
+	if (!*list || !list || !(*list)->next)
 		return;
 
 	browse = (*list)->next;
