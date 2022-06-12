@@ -4,9 +4,9 @@
  * @a: first element 
  * @b: second element
  */
-void swap_array(size_t a, size_t b)
+void swap_array(int *a, int *b)
 {
-	size_t tmp;
+	int *tmp;
 
 	tmp = a;
 	a = b;
@@ -23,41 +23,30 @@ void swap_array(size_t a, size_t b)
  */
 void quick_sort(int *array, size_t size)
 {
-	int pivot;
-	size_t idx, end, new_size;
+	size_t pivot;
+	size_t idx = 0, end = size - 1, new_idx, right_size = 0, left_size = 0;
 
 	if (!array || size < 2)
 		return;
 
-	pivot = array[0];
-	for (idx = 0; idx < size; idx++)
-		;
-	end = idx;
-
-	for (idx = 0; idx < size; idx++)
+	if (idx < end)
+		pivot = idx;
+	while (idx < end)
 	{
-		while(end > idx)
-			{
-				while (array[idx] <= pivot)
-					idx++;
-				while (array[end] >= pivot)
-					end--;
-				if (idx < end)
-					swap_array(array[idx], array[end]);
-				if (idx > end)
-					swap_array(array[end], pivot);
-			}
-		
-		for (idx = 0; array[idx] < pivot; idx++)
-		{
-			new_size = pivot + 1;
-			quick_sort(array, new_size);
-		}
-		for (idx = pivot + 1; array[end] > pivot; idx++)
-		{
-			new_size = end + 1;
-			quick_sort(array, new_size);
-		}
-		print_array(array, size);
+		while (array[idx] <= array[end])
+			idx++;
+		while (array[end] > array[pivot])
+			end--;
+		if (idx < end)
+			swap_array(&array[idx], &array[end]);
 	}
+	swap_array(&array[pivot], &array[end]);
+
+	for (new_idx = idx; new_idx < pivot; new_idx++)
+		right_size++;
+	quick_sort(array, right_size);
+
+	for (new_idx = pivot + 1; new_idx < end; new_idx++)
+		left_size++;
+	quick_sort(array, left_size);
 }
