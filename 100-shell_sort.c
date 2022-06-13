@@ -35,8 +35,8 @@ void shell_sort(int *array, size_t size)
 		{
 			for (second = first + interval; second < size; second++)
 			{
-				if (array[first] > array[second])
-					swap_array(&array[first], &array[second]);
+				while (array[second - interval] > array[second])
+					swap_array(&array[second - interval], &array[second]);
 			}
 		}
 		print_array(array, size);
