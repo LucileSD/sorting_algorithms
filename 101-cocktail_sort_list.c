@@ -59,7 +59,7 @@ void cocktail_sort_list(listint_t **list)
 
 		while (move->prev && move)
 		{
-			if(move->n < move->prev->n)
+			if (move->n < move->prev->n)
 			{
 				swap(move, move->prev, list);
 				print_list(*list);
