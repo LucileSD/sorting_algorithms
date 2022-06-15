@@ -30,5 +30,9 @@ int partition(int array[], int low, int high, size_t size);
 void shell_sort(int *array, size_t size);
 void cocktail_sort_list(listint_t **list);
 void counting_sort(int *array, size_t size);
+void merge_sort(int *array, size_t size);
+void merge_sorted_arrays(int *array, int *arr_tmp, size_t left, size_t middle,
+size_t right);
+void merge_sort_recursion(int *array, int *arr_tmp, size_t left, size_t right);
 
 #endif
