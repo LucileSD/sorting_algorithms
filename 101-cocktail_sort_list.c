@@ -34,12 +34,13 @@ void swap(listint_t *current, listint_t *previous, listint_t **list)
  */
 void cocktail_sort_list(listint_t **list)
 {
-	listint_t *move = *list;
+	listint_t *move = NULL;
 	int issorted = 1;
 
 	if (!list || !*list || !(*list)->next)
 		return;
 
+	move = *list;
 	while (issorted)
 	{
 		issorted = 0;
